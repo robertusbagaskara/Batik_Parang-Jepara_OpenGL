@@ -44,8 +44,12 @@ void centerOrnament() {
 		glVertex2f(x + 50, y - 75);
 		glVertex2f(x, y);
 		glEnd();
-		glBegin(GL_QUADS);
+		glBegin(GL_TRIANGLES);
 		glVertex2f(x - 37.5, y);
+		glVertex2f(x, y - 25);;
+		glVertex2f(x, y + 25);
+		glEnd();
+		glBegin(GL_TRIANGLES);
 		glVertex2f(x, y - 25);
 		glVertex2f(x + 37.5, y);
 		glVertex2f(x, y + 25);
@@ -102,12 +106,81 @@ void centerOrnament() {
 	}
 }
 
+void upperOrnament(int a, int b, int c) {
+	for (int x = a; x <= b; x = x + 350) {
+		int y = c;
+		glColor3ub(132, 129, 133);
+		glBegin(GL_POLYGON);
+		glVertex2f(x - 100, y - 25);
+		glVertex2f(x - 75, y - 50);
+		glVertex2f(x, y + 25);
+		glVertex2f(x, y + 75);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex2f(x, y + 25);
+		glVertex2f(x + 75, y - 50);
+		glVertex2f(x + 100, y - 25);
+		glVertex2f(x, y + 75);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex2f(x - 125, y);
+		glVertex2f(x - 100, y - 25);
+		glVertex2f(x - 75, y);
+		glVertex2f(x - 100, y + 25);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex2f(x - 87.5, y + 37.5);
+		glVertex2f(x - 62.5, y + 12.5);
+		glVertex2f(x - 37.5, y + 37.5);
+		glVertex2f(x - 62.5, y + 62.5);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex2f(x - 50, y + 75);
+		glVertex2f(x - 25, y + 50);
+		glVertex2f(x, y + 75);
+		glVertex2f(x - 25, y + 100);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex2f(x + 75, y);
+		glVertex2f(x + 100, y - 25);
+		glVertex2f(x + 125, y);
+		glVertex2f(x + 100, y + 25);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex2f(x + 37.5, y + 37.5);
+		glVertex2f(x + 62.5, y + 12.5);
+		glVertex2f(x + 87.5, y + 37.5);
+		glVertex2f(x + 62.5, y + 62.5);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex2f(x, y + 75);
+		glVertex2f(x + 25, y + 50);
+		glVertex2f(x + 50, y + 75);
+		glVertex2f(x + 25, y + 100);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex2f(x - 50, y - 75);
+		glVertex2f(x, y - 125);
+		glVertex2f(x + 50, y - 75);
+		glVertex2f(x, y - 25);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex2f(x - 12.5, y + 112.5);
+		glVertex2f(x, y + 100);
+		glVertex2f(x + 12.5, y + 112.5);
+		glVertex2f(x, y + 125);
+		glEnd();
+	}
+}
+
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glColor3ub(80, 75, 81);
 	one();
 	two();
 	centerOrnament();
+	upperOrnament(50, 750, 650);
+	upperOrnament(-125, 925, 475);
 	glFlush();
 }
 
