@@ -2,7 +2,7 @@
 #include <GL/freeglut.h>
 
 void background() {
-	glColor3ub(80, 75, 81);
+	glColor3ub(112, 112, 112);
 	glBegin(GL_QUADS);
 	glVertex2f(0, 0);
 	glVertex2f(800, 0);
@@ -10,11 +10,11 @@ void background() {
 	glVertex2f(0, 600);
 }
 
-void one() {
-	glColor3ub(132, 129, 133);
+void rectangleRow(int xMin, int xMax, int yMin, int yMax) {
+	glColor3ub(55, 50, 50);
 	glBegin(GL_QUADS);
-	for (int x = 50; x <= 750; x = x + 350) {
-		for (int y = -50; y <= 650; y = y + 350) {
+	for (int x = xMin; x <= xMax; x = x + 350) {
+		for (int y = yMin; y <= yMax; y = y + 350) {
 			glVertex2i(x - 150, y);
 			glVertex2i(x, y - 150);
 			glVertex2i(x + 150, y);
@@ -24,24 +24,10 @@ void one() {
 	glEnd();
 }
 
-void two() {
-	glColor3ub(132, 129, 133);
-	glBegin(GL_QUADS);
-	for (int x = -125; x <= 925; x = x + 350) {
-		for (int y = 125; y <= 475; y = y + 350) {
-			glVertex2i(x - 150, y);
-			glVertex2i(x, y - 150);
-			glVertex2i(x + 150, y);
-			glVertex2i(x, y + 150);
-		}
-	}
-	glEnd();
-}
-
-void centerOrnament() {
-	double y = 300;
-	for (double x = 50; x <= 750; x = x + 350) {
-		glColor3ub(80, 75, 81);
+void centerOrnament(int a, int b, int c) {
+	double y = c;
+	for (double x = a; x <= b; x = x + 350) {
+		glColor3ub(112, 112, 112);
 		glBegin(GL_QUADS);
 		glVertex2f(x - 50, y + 75);
 		glVertex2f(x, y);
@@ -100,7 +86,7 @@ void centerOrnament() {
 		glVertex2f(x - 62.5, y);
 		glVertex2f(x - 100, y + 25);
 		glEnd();
-		glColor3ub(132, 129, 133);
+		glColor3ub(55, 50, 50);
 		glBegin(GL_POLYGON);
 		glVertex2f(x - 25, y + 75);
 		glVertex2f(x, y + 37.5);
@@ -119,7 +105,7 @@ void centerOrnament() {
 void upperOrnament(int a, int b, int c) {
 	for (int x = a; x <= b; x = x + 350) {
 		int y = c;
-		glColor3ub(80, 75, 81);
+		glColor3ub(112, 112, 112);
 		glBegin(GL_POLYGON);
 		glVertex2f(x - 100, y - 25);
 		glVertex2f(x - 75, y - 50);
@@ -186,7 +172,7 @@ void upperOrnament(int a, int b, int c) {
 void lowerOrnament(int a, int b, int c) {
 	for (int x = a; x <= b; x = x + 350) {
 		int y = c;
-		glColor3ub(80, 75, 81);
+		glColor3ub(112, 112, 112);
 		glBegin(GL_POLYGON);
 		glVertex2f(x - 100, y + 25);
 		glVertex2f(x, y - 75);
@@ -253,13 +239,13 @@ void lowerOrnament(int a, int b, int c) {
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
 	background();
-	one();
-	two();
-	centerOrnament();
-	upperOrnament(50, 750, 650);
+	rectangleRow(50, 750, -50, 650);
+	rectangleRow(-125, 925, 125, 475);
+	centerOrnament(50, 750, 650);
+	centerOrnament(50, 750, 300);
+	centerOrnament(50, 750, -50);
 	upperOrnament(-125, 925, 475);
 	lowerOrnament(-125, 925, 125);
-	lowerOrnament(50, 750, -50);
 	glFlush();
 }
 
