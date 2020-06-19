@@ -2,12 +2,12 @@
 #include <GL/freeglut.h>
 
 void background() {
-	glColor3ub(112, 112, 112);
+	glColor3ub(182, 180, 183);
 	glBegin(GL_QUADS);
-	glVertex2f(0, 0);
-	glVertex2f(800, 0);
-	glVertex2f(800, 600);
-	glVertex2f(0, 600);
+	glVertex2f(-100, -50);
+	glVertex2f(900, -50);
+	glVertex2f(900, 650);
+	glVertex2f(-100, 650);
 }
 
 void rectangleRow(int xMin, int xMax, int yMin, int yMax) {
@@ -27,7 +27,7 @@ void rectangleRow(int xMin, int xMax, int yMin, int yMax) {
 void centerOrnament(int a, int b, int c) {
 	double y = c;
 	for (double x = a; x <= b; x = x + 350) {
-		glColor3ub(112, 112, 112);
+		glColor3ub(182, 180, 183);
 		glBegin(GL_QUADS);
 		glVertex2f(x - 50, y + 75);
 		glVertex2f(x, y);
@@ -105,7 +105,7 @@ void centerOrnament(int a, int b, int c) {
 void upperOrnament(int a, int b, int c) {
 	for (int x = a; x <= b; x = x + 350) {
 		int y = c;
-		glColor3ub(112, 112, 112);
+		glColor3ub(182, 180, 183);
 		glBegin(GL_POLYGON);
 		glVertex2f(x - 100, y - 25);
 		glVertex2f(x - 75, y - 50);
@@ -172,7 +172,7 @@ void upperOrnament(int a, int b, int c) {
 void lowerOrnament(int a, int b, int c) {
 	for (int x = a; x <= b; x = x + 350) {
 		int y = c;
-		glColor3ub(112, 112, 112);
+		glColor3ub(182, 180, 183);
 		glBegin(GL_POLYGON);
 		glVertex2f(x - 100, y + 25);
 		glVertex2f(x, y - 75);
@@ -255,13 +255,13 @@ void myinit() {
 	glPointSize(2.0);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(0.0, 800.0, 0.0, 600.0);
+	gluOrtho2D(-100.0, 900.0, -50.0, 650.0);
 }
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	glutInitWindowSize(801, 601);
+	glutInitWindowSize(1001, 701);
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Parang Jepara Motive");
 	glutDisplayFunc(display);
